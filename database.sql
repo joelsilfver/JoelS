@@ -385,6 +385,19 @@ SET character_set_client = utf8;
 SET character_set_client = @saved_cs_client;
 
 --
+-- Temporary view structure for view `vw_2_list_movies_in_genres`
+--
+
+DROP TABLE IF EXISTS `vw_2_list_movies_in_genres`;
+/*!50001 DROP VIEW IF EXISTS `vw_2_list_movies_in_genres`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `vw_2_list_movies_in_genres` AS SELECT 
+ 1 AS `Genre`,
+ 1 AS `Filmer`*/;
+SET character_set_client = @saved_cs_client;
+
+--
 -- Final view structure for view `1_list_all_movies`
 --
 
@@ -419,6 +432,24 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `vw_2_list_movies_in_genres`
+--
+
+/*!50001 DROP VIEW IF EXISTS `vw_2_list_movies_in_genres`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `vw_2_list_movies_in_genres` AS select `genre`.`Name` AS `Genre`,group_concat(`movie`.`Title` separator ', ') AS `Filmer` from ((`genre` join `movie_has_genre` on((`genre`.`Genre_ID` = `movie_has_genre`.`genre_Genre_ID`))) join `movie` on((`movie_has_genre`.`movie_Movie_ID` = `movie`.`Movie_ID`))) group by `genre`.`Name` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -429,4 +460,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-06  9:57:50
+-- Dump completed on 2018-04-06 10:33:03

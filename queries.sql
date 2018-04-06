@@ -5,7 +5,7 @@ SELECT * FROM vw_1_list_all_movies;
 
 -- Fråga 2: Vilka filmer som finns i en viss genre.
 
-SELECT * FROM products;
+SELECT * FROM vw_2_list_movies_in_genres;
 
 -- Fråga : Vilka filmer som är uthyrda, vem som hyrde dem (kund) och vem som hyrde ut dem (anställd).
 

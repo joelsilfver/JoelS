@@ -306,13 +306,13 @@ INSERT INTO `movie_has_genre` VALUES (1,1),(2,1),(5,1),(6,1),(7,1),(9,1),(5,2),(
 UNLOCK TABLES;
 
 --
--- Table structure for table `order`
+-- Table structure for table `rent_order`
 --
 
-DROP TABLE IF EXISTS `order`;
+DROP TABLE IF EXISTS `rent_order`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `order` (
+CREATE TABLE `rent_order` (
   `Order_ID` int(11) NOT NULL AUTO_INCREMENT,
   `RentDate` date NOT NULL,
   `ReturnDate` date DEFAULT NULL,
@@ -329,17 +329,17 @@ CREATE TABLE `order` (
   CONSTRAINT `fk_order_employee1` FOREIGN KEY (`employee_Employee_ID`) REFERENCES `employee` (`Employee_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_order_movie1` FOREIGN KEY (`movie_Movie_ID`) REFERENCES `movie` (`Movie_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_order_rental_objects1` FOREIGN KEY (`rental_objects_rental_objects_ID`) REFERENCES `rental_objects` (`rental_objects_ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `order`
+-- Dumping data for table `rent_order`
 --
 
-LOCK TABLES `order` WRITE;
-/*!40000 ALTER TABLE `order` DISABLE KEYS */;
-INSERT INTO `order` VALUES (1,'2018-01-01','2018-01-02',1,1,1,1),(3,'2018-01-02','2018-01-03',2,3,4,4),(4,'2018-01-02','2018-01-07',2,4,6,6),(5,'2018-01-06','2018-01-09',3,5,5,5),(6,'2018-01-06','2018-01-12',2,2,2,11),(7,'2018-01-07','2018-01-13',2,3,10,10),(8,'2018-01-13','2018-01-14',2,4,9,9),(9,'2018-01-14','2018-01-17',2,8,7,7),(10,'2018-01-15','2018-01-18',2,7,6,6),(11,'2018-01-17','2018-01-22',1,9,5,5),(12,'2018-01-20','2018-01-27',1,10,8,8),(13,'2018-01-21','2018-01-23',2,3,3,3),(14,'2018-01-25','2018-01-30',1,1,1,1),(15,'2018-02-01','2018-02-04',2,2,1,1),(16,'2018-02-03','2018-02-05',2,8,7,7),(17,'2018-02-04','2018-02-08',4,4,4,4),(18,'2018-02-05','2018-02-08',4,2,10,10),(19,'2018-02-06','2018-02-11',4,10,1,1),(20,'2018-02-07','2018-02-09',4,1,2,2),(21,'2018-02-09','2018-02-09',4,5,5,5),(22,'2018-02-10','2018-02-11',4,4,6,6),(23,'2018-02-12','2018-02-13',4,6,9,9),(24,'2018-02-13','2018-02-19',6,1,4,4),(25,'2018-02-12','2018-02-13',6,7,6,6),(26,'2018-02-13','2018-02-16',8,11,2,2),(27,'2018-02-15','2018-02-18',8,8,8,8),(28,'2018-02-20','2018-02-26',8,2,5,5),(29,'2018-02-25','2018-02-27',8,1,3,3),(30,'2018-02-28','2018-03-02',8,7,7,7),(31,'2018-03-02','2018-03-02',8,5,2,11),(32,'2018-03-03','2018-03-04',9,2,8,8),(33,'2018-03-05','2018-03-07',9,10,2,2),(34,'2018-03-08','2018-03-14',9,11,1,1),(35,'2018-03-14','2018-03-16',10,1,3,3),(36,'2018-03-17','2018-03-20',10,6,5,5),(37,'2018-03-18','2018-03-21',10,9,9,9),(38,'2018-03-23','2018-03-28',10,10,1,1),(39,'2018-04-01','2018-04-03',10,2,7,7);
-/*!40000 ALTER TABLE `order` ENABLE KEYS */;
+LOCK TABLES `rent_order` WRITE;
+/*!40000 ALTER TABLE `rent_order` DISABLE KEYS */;
+INSERT INTO `rent_order` VALUES (1,'2018-01-01','2018-01-02',1,1,1,1),(3,'2018-01-02','2018-01-03',2,3,4,4),(4,'2018-01-02','2018-01-07',2,4,6,6),(5,'2018-01-06','2018-01-09',3,5,5,5),(6,'2018-01-06','2018-01-12',2,2,2,11),(7,'2018-01-07','2018-01-13',2,3,10,10),(8,'2018-01-13','2018-01-14',2,4,9,9),(9,'2018-01-14','2018-01-17',2,8,7,7),(10,'2018-01-15','2018-01-18',2,7,6,6),(11,'2018-01-17','2018-01-22',1,9,5,5),(12,'2018-01-20','2018-01-27',1,10,8,8),(13,'2018-01-21','2018-01-23',2,3,3,3),(14,'2018-01-25','2018-01-30',1,1,1,1),(15,'2018-02-01','2018-02-04',2,2,1,1),(16,'2018-02-03','2018-02-05',2,8,7,7),(17,'2018-02-04','2018-02-08',4,4,4,4),(18,'2018-02-05','2018-02-08',4,2,10,10),(19,'2018-02-06','2018-02-11',4,10,1,1),(20,'2018-02-07','2018-02-09',4,1,2,2),(21,'2018-02-09','2018-02-09',4,5,5,5),(22,'2018-02-10','2018-02-11',4,4,6,6),(23,'2018-02-12','2018-02-13',4,6,9,9),(24,'2018-02-13','2018-02-19',6,1,4,4),(25,'2018-02-12','2018-02-13',6,7,6,6),(26,'2018-02-13','2018-02-16',8,11,2,2),(27,'2018-02-15','2018-02-18',8,8,8,8),(28,'2018-02-20','2018-02-26',8,2,5,5),(29,'2018-02-25','2018-02-27',8,1,3,3),(30,'2018-02-28','2018-03-02',8,7,7,7),(31,'2018-03-02','2018-03-02',8,5,2,11),(32,'2018-03-03','2018-03-04',9,2,8,8),(33,'2018-03-05','2018-03-07',9,10,2,2),(34,'2018-03-08','2018-03-14',9,11,1,1),(35,'2018-03-14','2018-03-16',10,1,3,3),(36,'2018-03-17','2018-03-20',10,6,5,5),(37,'2018-03-18','2018-03-21',10,9,9,9),(38,'2018-03-23','2018-03-28',10,10,1,1),(39,'2018-04-01','2018-04-03',10,2,7,7),(40,'2018-04-01',NULL,5,1,2,2),(41,'2018-04-02',NULL,2,7,5,5),(42,'2018-04-03',NULL,7,10,6,6),(43,'2018-04-04',NULL,1,6,5,5);
+/*!40000 ALTER TABLE `rent_order` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -410,7 +410,7 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET collation_connection      = utf8_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `1_list_all_movies` AS select `movie`.`Title` AS `Våra filmer`,`movie`.`Description` AS `Beskrivning`,`movie`.`Year` AS `Release-år`,group_concat(concat(`actor`.`FirstName`,' ',`actor`.`LastName`) separator ', ') AS `Skådespelare` from ((`actor` join `movie_has_actor` on((`actor`.`Actor_ID` = `movie_has_actor`.`actor_Actor_ID`))) join `movie` on((`movie_has_actor`.`movie_Movie_ID` = `movie`.`Movie_ID`))) group by `movie`.`Title` */;
+/*!50001 VIEW `1_list_all_movies` AS select 1 AS `Våra filmer`,1 AS `Beskrivning`,1 AS `Release-år`,1 AS `Skådespelare` */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -460,4 +460,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-06 10:33:03
+-- Dump completed on 2018-04-06 11:56:57

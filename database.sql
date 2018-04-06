@@ -338,11 +338,7 @@ CREATE TABLE `rent_order` (
 
 LOCK TABLES `rent_order` WRITE;
 /*!40000 ALTER TABLE `rent_order` DISABLE KEYS */;
-<<<<<<< HEAD
-INSERT INTO `rent_order` VALUES (1,'2018-01-01','2018-01-02',1,1,1,1),(3,'2018-01-02','2018-01-03',2,3,4,4),(4,'2018-01-02','2018-01-07',2,4,6,6),(5,'2018-01-06','2018-01-09',3,5,5,5),(6,'2018-01-06','2018-01-12',2,2,2,11),(7,'2018-01-07','2018-01-13',2,3,10,10),(8,'2018-01-13','2018-01-14',2,4,9,9),(9,'2018-01-14','2018-01-17',2,8,7,7),(10,'2018-01-15','2018-01-18',2,7,6,6),(11,'2018-01-17','2018-01-22',1,9,5,5),(12,'2018-01-20','2018-01-27',1,10,8,8),(13,'2018-01-21','2018-01-23',2,3,3,3),(14,'2018-01-25','2018-01-30',1,1,1,1),(15,'2018-02-01','2018-02-04',2,2,1,1),(16,'2018-02-03','2018-02-05',2,8,7,7),(17,'2018-02-04','2018-02-08',4,4,4,4),(18,'2018-02-05','2018-02-08',4,2,10,10),(19,'2018-02-06','2018-02-11',4,10,1,1),(20,'2018-02-07','2018-02-09',4,1,2,2),(21,'2018-02-09','2018-02-09',4,5,5,5),(22,'2018-02-10','2018-02-11',4,4,6,6),(23,'2018-02-12','2018-02-13',4,6,9,9),(24,'2018-02-13','2018-02-19',6,1,4,4),(25,'2018-02-12','2018-02-13',6,7,6,6),(26,'2018-02-13','2018-02-16',8,11,2,2),(27,'2018-02-15','2018-02-18',8,8,8,8),(28,'2018-02-20','2018-02-26',8,2,5,5),(29,'2018-02-25','2018-02-27',8,1,3,3),(30,'2018-02-28','2018-03-02',8,7,7,7),(31,'2018-03-02','2018-03-02',8,5,2,11),(32,'2018-03-03','2018-03-04',9,2,8,8),(33,'2018-03-05','2018-03-07',9,10,2,2),(34,'2018-03-08','2018-03-14',9,11,1,1),(35,'2018-03-14','2018-03-16',10,1,3,3),(36,'2018-03-17','2018-03-20',10,6,5,5),(37,'2018-03-18','2018-03-21',10,9,9,9),(38,'2018-03-23','2018-03-28',10,10,1,1),(39,'2018-04-01','2018-04-03',10,2,7,7),(40,'2018-04-01',NULL,5,1,2,2),(41,'2018-04-02',NULL,2,7,5,5),(42,'2018-04-03',NULL,7,10,6,6),(43,'2018-04-04',NULL,1,6,5,5);
-=======
 INSERT INTO `rent_order` VALUES (1,'2018-01-01','2018-01-02',1,1,1,1),(3,'2018-01-02','2018-01-03',2,3,4,4),(4,'2018-01-02','2018-01-07',2,4,6,6),(5,'2018-01-06','2018-01-09',3,5,5,5),(6,'2018-01-06','2018-01-12',2,2,2,11),(7,'2018-01-07','2018-01-13',2,3,10,10),(8,'2018-01-13','2018-01-14',2,4,9,9),(9,'2018-01-14','2018-01-17',2,8,7,7),(10,'2018-01-15','2018-01-18',2,7,6,6),(11,'2018-01-17','2018-01-22',1,9,5,5),(12,'2018-01-20','2018-01-27',1,10,8,8),(13,'2018-01-21','2018-01-23',2,3,3,3),(14,'2018-01-25','2018-01-30',1,1,1,1),(15,'2018-02-01','2018-02-04',2,2,1,1),(16,'2018-02-03','2018-02-05',2,8,7,7),(17,'2018-02-04','2018-02-08',4,4,4,4),(18,'2018-02-05','2018-02-08',4,2,10,10),(19,'2018-02-06','2018-02-11',4,10,1,1),(20,'2018-02-07','2018-02-09',4,1,2,2),(21,'2018-02-09','2018-02-09',4,5,5,5),(22,'2018-02-10','2018-02-11',4,4,6,6),(23,'2018-02-12','2018-02-13',4,6,9,9),(24,'2018-02-13','2018-02-19',6,1,4,4),(25,'2018-02-12','2018-02-13',6,7,6,6),(26,'2018-02-13','2018-02-16',8,11,2,2),(27,'2018-02-15','2018-02-18',8,8,8,8),(28,'2018-02-20','2018-02-26',8,2,5,5),(29,'2018-02-25','2018-02-27',8,1,3,3),(30,'2018-02-28','2018-03-02',8,7,7,7),(31,'2018-03-02','2018-03-02',8,5,2,11),(32,'2018-03-03','2018-03-04',9,2,8,8),(33,'2018-03-05','2018-03-07',9,10,2,2),(34,'2018-03-08','2018-03-14',9,11,1,1),(35,'2018-03-14','2018-03-16',10,1,3,3),(36,'2018-03-17','2018-03-20',10,6,5,5),(37,'2018-03-18','2018-03-21',10,9,9,9),(38,'2018-03-23','2018-03-28',10,10,1,1),(39,'2018-04-01','2018-04-03',10,2,7,7),(40,'2018-04-01',NULL,5,7,6,6),(41,'2018-04-03',NULL,2,2,1,1),(42,'2018-04-03',NULL,7,8,8,8),(43,'2018-04-05',NULL,1,4,4,4);
->>>>>>> feature/2_List_movies_in_genres
 /*!40000 ALTER TABLE `rent_order` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -402,6 +398,20 @@ SET character_set_client = utf8;
 SET character_set_client = @saved_cs_client;
 
 --
+-- Temporary view structure for view `vw_3_list_movies_not_returned`
+--
+
+DROP TABLE IF EXISTS `vw_3_list_movies_not_returned`;
+/*!50001 DROP VIEW IF EXISTS `vw_3_list_movies_not_returned`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `vw_3_list_movies_not_returned` AS SELECT 
+ 1 AS `För närvarande uthyrda filmer`,
+ 1 AS `Kund`,
+ 1 AS `Anställd`*/;
+SET character_set_client = @saved_cs_client;
+
+--
 -- Final view structure for view `1_list_all_movies`
 --
 
@@ -454,6 +464,24 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `vw_3_list_movies_not_returned`
+--
+
+/*!50001 DROP VIEW IF EXISTS `vw_3_list_movies_not_returned`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `vw_3_list_movies_not_returned` AS select `movie`.`Title` AS `För närvarande uthyrda filmer`,concat(`customer`.`FirstName`,' ',`customer`.`LastName`) AS `Kund`,concat(`employee`.`FirstName`,' ',`employee`.`LastName`) AS `Anställd` from (((`movie` join `rent_order` on((`movie`.`Movie_ID` = `rent_order`.`movie_Movie_ID`))) join `employee` on((`rent_order`.`employee_Employee_ID` = `employee`.`Employee_ID`))) join `customer` on((`rent_order`.`cusomer_Cusomer_ID` = `customer`.`Cusomer_ID`))) where isnull(`rent_order`.`ReturnDate`) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -464,8 +492,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
-<<<<<<< HEAD
--- Dump completed on 2018-04-06 11:56:57
-=======
--- Dump completed on 2018-04-06 14:01:20
->>>>>>> feature/2_List_movies_in_genres
+-- Dump completed on 2018-04-06 14:32:45

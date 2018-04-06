@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `joels` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci */;
+USE `joels`;
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
 -- Host: localhost    Database: joels
@@ -14,6 +16,21 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Temporary view structure for view `1_list_all_movies`
+--
+
+DROP TABLE IF EXISTS `1_list_all_movies`;
+/*!50001 DROP VIEW IF EXISTS `1_list_all_movies`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `1_list_all_movies` AS SELECT 
+ 1 AS `Våra filmer`,
+ 1 AS `Beskrivning`,
+ 1 AS `Release-år`,
+ 1 AS `Skådespelare`*/;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Table structure for table `actor`
@@ -351,6 +368,57 @@ LOCK TABLES `rental_objects` WRITE;
 INSERT INTO `rental_objects` VALUES (1,0,1),(2,0,2),(3,0,3),(4,0,4),(5,0,5),(6,0,6),(7,0,7),(8,0,8),(9,0,9),(10,0,10),(11,0,2),(12,0,2),(13,0,6);
 /*!40000 ALTER TABLE `rental_objects` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Temporary view structure for view `vw_1_list_all_movies`
+--
+
+DROP TABLE IF EXISTS `vw_1_list_all_movies`;
+/*!50001 DROP VIEW IF EXISTS `vw_1_list_all_movies`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `vw_1_list_all_movies` AS SELECT 
+ 1 AS `Våra filmer`,
+ 1 AS `Beskrivning`,
+ 1 AS `Release-år`,
+ 1 AS `Skådespelare`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Final view structure for view `1_list_all_movies`
+--
+
+/*!50001 DROP VIEW IF EXISTS `1_list_all_movies`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `1_list_all_movies` AS select `movie`.`Title` AS `Våra filmer`,`movie`.`Description` AS `Beskrivning`,`movie`.`Year` AS `Release-år`,group_concat(concat(`actor`.`FirstName`,' ',`actor`.`LastName`) separator ', ') AS `Skådespelare` from ((`actor` join `movie_has_actor` on((`actor`.`Actor_ID` = `movie_has_actor`.`actor_Actor_ID`))) join `movie` on((`movie_has_actor`.`movie_Movie_ID` = `movie`.`Movie_ID`))) group by `movie`.`Title` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `vw_1_list_all_movies`
+--
+
+/*!50001 DROP VIEW IF EXISTS `vw_1_list_all_movies`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `vw_1_list_all_movies` AS select `movie`.`Title` AS `Våra filmer`,`movie`.`Description` AS `Beskrivning`,`movie`.`Year` AS `Release-år`,group_concat(concat(`actor`.`FirstName`,' ',`actor`.`LastName`) separator ', ') AS `Skådespelare` from ((`actor` join `movie_has_actor` on((`actor`.`Actor_ID` = `movie_has_actor`.`actor_Actor_ID`))) join `movie` on((`movie_has_actor`.`movie_Movie_ID` = `movie`.`Movie_ID`))) group by `movie`.`Title` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -361,4 +429,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-06  8:50:16
+-- Dump completed on 2018-04-06  9:57:50

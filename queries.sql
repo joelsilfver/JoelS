@@ -13,7 +13,7 @@ SELECT * FROM vw_3_list_movies_not_returned;
 
 -- Fråga 4: Vilka filmer som har gått över tiden, dvs filmer som inte har blivit återlämnade trots att de borde vara det, tillsammans med namnet på kunden som har hyrt den.
 
-SELECT * FROM products;
+SELECT * FROM vw_4_list_late_movies;
 
 -- Fråga 5: En lista över alla anställda och hur många filmer varje anställd har hyrt ut.
 

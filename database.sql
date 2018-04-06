@@ -99,6 +99,32 @@ INSERT INTO `director` VALUES (1,'Luc','Besson'),(2,'John','McTierman'),(3,'Ivan
 UNLOCK TABLES;
 
 --
+-- Table structure for table `dvds`
+--
+
+DROP TABLE IF EXISTS `dvds`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `dvds` (
+  `Dvds_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Movies_ID` int(11) DEFAULT NULL,
+  `movie_Movie_ID` int(11) NOT NULL,
+  PRIMARY KEY (`Dvds_ID`),
+  KEY `fk_dvds_movie1_idx` (`movie_Movie_ID`),
+  CONSTRAINT `fk_dvds_movie1` FOREIGN KEY (`movie_Movie_ID`) REFERENCES `movie` (`Movie_ID`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `dvds`
+--
+
+LOCK TABLES `dvds` WRITE;
+/*!40000 ALTER TABLE `dvds` DISABLE KEYS */;
+/*!40000 ALTER TABLE `dvds` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `employee`
 --
 
@@ -276,13 +302,16 @@ CREATE TABLE `order` (
   `employee_Employee_ID` int(11) NOT NULL,
   `cusomer_Cusomer_ID` int(11) NOT NULL,
   `movie_Movie_ID` int(11) NOT NULL,
+  `rental_objects_rental_objects_ID` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`Order_ID`),
   KEY `fk_order_employee1_idx` (`employee_Employee_ID`),
   KEY `fk_order_cusomer1_idx` (`cusomer_Cusomer_ID`),
   KEY `fk_order_movie1_idx` (`movie_Movie_ID`),
+  KEY `fk_order_rental_objects1_idx` (`rental_objects_rental_objects_ID`),
   CONSTRAINT `fk_order_cusomer1` FOREIGN KEY (`cusomer_Cusomer_ID`) REFERENCES `customer` (`Cusomer_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_order_employee1` FOREIGN KEY (`employee_Employee_ID`) REFERENCES `employee` (`Employee_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_order_movie1` FOREIGN KEY (`movie_Movie_ID`) REFERENCES `movie` (`Movie_ID`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `fk_order_movie1` FOREIGN KEY (`movie_Movie_ID`) REFERENCES `movie` (`Movie_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_order_rental_objects1` FOREIGN KEY (`rental_objects_rental_objects_ID`) REFERENCES `rental_objects` (`rental_objects_ID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -292,8 +321,35 @@ CREATE TABLE `order` (
 
 LOCK TABLES `order` WRITE;
 /*!40000 ALTER TABLE `order` DISABLE KEYS */;
-INSERT INTO `order` VALUES (1,'2018-01-01','2018-01-02',1,1,1),(3,'2018-01-02','2018-01-03',2,3,4),(4,'2018-01-02','2018-01-07',2,4,6),(5,'2018-01-06','2018-01-09',3,5,5),(6,'2018-01-06','2018-01-12',2,2,2),(7,'2018-01-07','2018-01-13',2,3,10),(8,'2018-01-13','2018-01-14',2,4,9),(9,'2018-01-14','2018-01-17',2,8,7),(10,'2018-01-15','2018-01-18',2,7,6),(11,'2018-01-17','2018-01-22',1,9,5),(12,'2018-01-20','2018-01-27',1,10,8),(13,'2018-01-21','2018-01-23',2,3,3),(14,'2018-01-25','2018-01-30',1,1,1),(15,'2018-02-01','2018-02-04',2,2,1),(16,'2018-02-03','2018-02-05',2,8,7),(17,'2018-02-04','2018-02-08',4,4,4),(18,'2018-02-05','2018-02-08',4,2,10),(19,'2018-02-06','2018-02-11',4,10,1),(20,'2018-02-07','2018-02-09',4,1,2),(21,'2018-02-09','2018-02-09',4,5,5),(22,'2018-02-10','2018-02-11',4,4,6),(23,'2018-02-12','2018-02-13',4,6,9),(24,'2018-02-13','2018-02-19',6,1,4),(25,'2018-02-12','2018-02-13',6,7,6),(26,'2018-02-13','2018-02-16',8,11,2),(27,'2018-02-15','2018-02-18',8,8,8),(28,'2018-02-20','2018-02-26',8,2,5),(29,'2018-02-25','2018-02-27',8,1,3),(30,'2018-02-28','2018-03-02',8,7,7),(31,'2018-03-02','2018-03-02',8,5,2),(32,'2018-03-03','2018-03-04',9,2,8),(33,'2018-03-05','2018-03-07',9,10,2),(34,'2018-03-08','2018-03-14',9,11,1),(35,'2018-03-14','2018-03-16',10,1,3),(36,'2018-03-17','2018-03-20',10,6,5),(37,'2018-03-18','2018-03-21',10,9,9),(38,'2018-03-23','2018-03-28',10,10,1),(39,'2018-04-01','2018-04-03',10,2,7);
+INSERT INTO `order` VALUES (1,'2018-01-01','2018-01-02',1,1,1,1),(3,'2018-01-02','2018-01-03',2,3,4,4),(4,'2018-01-02','2018-01-07',2,4,6,6),(5,'2018-01-06','2018-01-09',3,5,5,5),(6,'2018-01-06','2018-01-12',2,2,2,11),(7,'2018-01-07','2018-01-13',2,3,10,10),(8,'2018-01-13','2018-01-14',2,4,9,9),(9,'2018-01-14','2018-01-17',2,8,7,7),(10,'2018-01-15','2018-01-18',2,7,6,6),(11,'2018-01-17','2018-01-22',1,9,5,5),(12,'2018-01-20','2018-01-27',1,10,8,8),(13,'2018-01-21','2018-01-23',2,3,3,3),(14,'2018-01-25','2018-01-30',1,1,1,1),(15,'2018-02-01','2018-02-04',2,2,1,1),(16,'2018-02-03','2018-02-05',2,8,7,7),(17,'2018-02-04','2018-02-08',4,4,4,4),(18,'2018-02-05','2018-02-08',4,2,10,10),(19,'2018-02-06','2018-02-11',4,10,1,1),(20,'2018-02-07','2018-02-09',4,1,2,2),(21,'2018-02-09','2018-02-09',4,5,5,5),(22,'2018-02-10','2018-02-11',4,4,6,6),(23,'2018-02-12','2018-02-13',4,6,9,9),(24,'2018-02-13','2018-02-19',6,1,4,4),(25,'2018-02-12','2018-02-13',6,7,6,6),(26,'2018-02-13','2018-02-16',8,11,2,2),(27,'2018-02-15','2018-02-18',8,8,8,8),(28,'2018-02-20','2018-02-26',8,2,5,5),(29,'2018-02-25','2018-02-27',8,1,3,3),(30,'2018-02-28','2018-03-02',8,7,7,7),(31,'2018-03-02','2018-03-02',8,5,2,11),(32,'2018-03-03','2018-03-04',9,2,8,8),(33,'2018-03-05','2018-03-07',9,10,2,2),(34,'2018-03-08','2018-03-14',9,11,1,1),(35,'2018-03-14','2018-03-16',10,1,3,3),(36,'2018-03-17','2018-03-20',10,6,5,5),(37,'2018-03-18','2018-03-21',10,9,9,9),(38,'2018-03-23','2018-03-28',10,10,1,1),(39,'2018-04-01','2018-04-03',10,2,7,7);
 /*!40000 ALTER TABLE `order` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `rental_objects`
+--
+
+DROP TABLE IF EXISTS `rental_objects`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `rental_objects` (
+  `rental_objects_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `rented` tinyint(4) NOT NULL DEFAULT '0',
+  `movie_Movie_ID` int(11) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`rental_objects_ID`),
+  KEY `fk_rental_objects_movie1_idx` (`movie_Movie_ID`),
+  CONSTRAINT `fk_rental_objects_movie1` FOREIGN KEY (`movie_Movie_ID`) REFERENCES `movie` (`Movie_ID`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `rental_objects`
+--
+
+LOCK TABLES `rental_objects` WRITE;
+/*!40000 ALTER TABLE `rental_objects` DISABLE KEYS */;
+INSERT INTO `rental_objects` VALUES (1,0,1),(2,0,2),(3,0,3),(4,0,4),(5,0,5),(6,0,6),(7,0,7),(8,0,8),(9,0,9),(10,0,10),(11,0,2),(12,0,2),(13,0,6);
+/*!40000 ALTER TABLE `rental_objects` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -305,4 +361,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-05 13:37:46
+-- Dump completed on 2018-04-06  8:50:16

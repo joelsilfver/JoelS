@@ -21,7 +21,7 @@ SELECT * FROM vw_5_list_employees_and_orders;
 
 -- Fråga 6: En lista med statistik över de mest uthyrda filmerna den senaste månaden. Se fråga 10.
 
-SELECT * FROM products;
+SELECT * FROM vw_6_list_most_rented_movies_last_month;
 
 -- Fråga 7: En Stored Procedure som ska köras när en film lämnas ut. Ska alltså sätta filmen till uthyrd, vem som hyrt den osv.
 

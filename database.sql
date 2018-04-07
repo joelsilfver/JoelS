@@ -310,7 +310,7 @@ CREATE TABLE `rent_order` (
   CONSTRAINT `fk_order_cusomer1` FOREIGN KEY (`cusomer_Cusomer_ID`) REFERENCES `customer` (`Cusomer_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_order_employee1` FOREIGN KEY (`employee_Employee_ID`) REFERENCES `employee` (`Employee_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_order_rental_objects1` FOREIGN KEY (`rental_objects_rental_objects_ID`) REFERENCES `rental_objects` (`rental_objects_ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -346,7 +346,7 @@ CREATE TABLE `rental_objects` (
 
 LOCK TABLES `rental_objects` WRITE;
 /*!40000 ALTER TABLE `rental_objects` DISABLE KEYS */;
-INSERT INTO `rental_objects` VALUES (1,0,1),(2,0,2),(3,0,3),(4,0,4),(5,0,5),(6,0,6),(7,0,7),(8,0,8),(9,0,9),(10,0,10),(11,0,2),(12,0,2),(13,0,6);
+INSERT INTO `rental_objects` VALUES (1,1,1),(2,0,2),(3,0,3),(4,1,4),(5,0,5),(6,1,6),(7,0,7),(8,1,8),(9,0,9),(10,0,10),(11,0,2),(12,0,2),(13,0,6);
 /*!40000 ALTER TABLE `rental_objects` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -548,4 +548,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-06 21:24:07
+-- Dump completed on 2018-04-07 21:20:41

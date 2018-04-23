@@ -310,7 +310,7 @@ CREATE TABLE `rent_order` (
   CONSTRAINT `fk_order_cusomer1` FOREIGN KEY (`cusomer_Cusomer_ID`) REFERENCES `customer` (`Cusomer_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_order_employee1` FOREIGN KEY (`employee_Employee_ID`) REFERENCES `employee` (`Employee_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_order_rental_objects1` FOREIGN KEY (`rental_objects_rental_objects_ID`) REFERENCES `rental_objects` (`rental_objects_ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -432,6 +432,97 @@ SET character_set_client = utf8;
 SET character_set_client = @saved_cs_client;
 
 --
+-- Dumping routines for database 'joels'
+--
+/*!50003 DROP FUNCTION IF EXISTS `8_return_rent_status` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` FUNCTION `8_return_rent_status`(rentobject INT) RETURNS int(11)
+BEGIN
+DECLARE orderid INT;
+DECLARE rentstatus INT;
+DECLARE rentdate DATE;
+DECLARE today DATE;
+SET today = CURDATE();
+
+SELECT `RentDate` 
+INTO rentdate
+FROM `rent_order`
+WHERE `ReturnDate` IS NULL
+AND `rental_objects_rental_objects_ID` = rentobject
+LIMIT 1;
+
+IF DATEDIFF(today, rentdate) > 4
+THEN SET rentstatus = 1;
+ELSE
+SET rentstatus = 0;
+END IF;
+
+
+
+
+RETURN rentstatus;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `7_rent_movie` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `7_rent_movie`(employee INT, customer INT, object_ID INT)
+BEGIN
+INSERT INTO `rent_order` (`RentDate`, `employee_Employee_ID`, `cusomer_Cusomer_ID`, `rental_objects_rental_objects_ID`)
+VALUES(CURDATE(), employee, customer, object_ID);
+
+UPDATE `rental_objects` SET rented = 1
+WHERE `rental_objects_ID` = object_ID;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `new_procedure` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `new_procedure`(employee INT, customer INT, object_ID INT)
+BEGIN
+INSERT INTO `rent_order` (`RentDate`, `employee_Employee_ID`, `cusomer_Cusomer_ID`, `rental_objects_rental_objects_ID`)
+VALUES(CURDATE(), employee, customer, object_ID);
+
+UPDATE `rental_objects` SET rented = 1
+WHERE `rental_objects_ID` = object_ID;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+
+--
 -- Final view structure for view `vw_1_list_all_movies`
 --
 
@@ -548,4 +639,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-08 20:14:03
+-- Dump completed on 2018-04-23  8:55:21
